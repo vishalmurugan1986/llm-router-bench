@@ -1,0 +1,25 @@
+[project]
+name = "model-router-bench"
+version = "0.1.0"
+description = "Eval-driven model router: picks the cheapest model that clears a quality bar, benchmarked against the ticket-triage agent-eval-harness."
+requires-python = ">=3.11"
+dependencies = [
+    # Pin to a tag or commit once you cut one in Project 1 -- avoids the
+    # router silently changing behavior when the harness changes.
+    # Example once tagged:
+    # "agent-eval-harness @ git+https://github.com/vishalmurugan1986/agent-eval-harness@v0.1.0",
+    "agent-eval-harness @ git+https://github.com/vishalmurugan1986/agent-eval-harness@v0.1.0",
+    "pydantic>=2.6",
+    "openai>=1.30",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["router*", "bench*", "dashboard*"]
